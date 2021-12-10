@@ -1,0 +1,23 @@
+---
+- name: Custom Facts
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+    - name: ensure custom facts directory exists 
+      file: 
+        path: /etc/ansible/facts.d 
+        recurse: yes 
+        state: directory 
+
+    - name: install custom lsblk routine
+      template: 
+        src:  scripts/lsblk_cmd
+        dest: /etc/ansible/facts.d/lsblk_facts.fact 
+        mode: 0755
+      notify: restart ansible_lsblk 
+
+  handlers:
+    - name: restart ansible_lsblk 
+      setup:
+        filter: ansible_block_info 
