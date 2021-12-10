@@ -15,7 +15,7 @@ def find_dm_device(dict_list, parent_index, dm_name):
 	print(dm_name)
 	print(dm_name.decode("utf-8"))
 	cmd = ("ls -l /dev/mapper/ | grep %s | awk '{ print $9 }'" % dm_name.decode("utf-8"))
-	cmd_buf = subprocess.check_output(cmd, shell = True).replace('\n', '')
+	cmd_buf = subprocess.check_output(cmd.encode(), shell = True).replace('\n', '')
 
 	for entry in dict_list:
 		if entry['name'] == cmd_buf:
