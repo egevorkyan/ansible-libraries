@@ -85,6 +85,7 @@ def build_hierarchy(overall, single):
 								index['children'] = []
 
 								for each in buf:
+									print(each)
 									if not each.find(b'dm'):
 										find_dm_device(single, index, each)
 
