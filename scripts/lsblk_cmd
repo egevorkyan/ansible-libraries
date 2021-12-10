@@ -12,6 +12,7 @@ import io
 # |- could just rename the variables too 
 
 def find_dm_device(dict_list, parent_index, dm_name):
+	print("I am here")
 	cmd = ("ls -l /dev/mapper/ | grep %s | awk '{ print $9 }'" % dm_name)
 	cmd_buf = subprocess.check_output(cmd, shell = True).replace('\n', '')
 
@@ -87,7 +88,7 @@ def build_hierarchy(overall, single):
 								for each in buf:
 									print(each)
 									if not each.find(b'dm'):
-										find_dm_device(single, index, each.decode("utf-8"))
+										find_dm_device(single, index, each)
 
 # Don't really need this if took better case of hierarchy method
 def remove_empty_children(list_dict):
