@@ -87,7 +87,7 @@ def build_hierarchy(overall, single):
 								for each in buf:
 									print(each)
 									if not each.find(b'dm'):
-										find_dm_device(single, index, each)
+										find_dm_device(single, index, each.decode("utf-8"))
 
 # Don't really need this if took better case of hierarchy method
 def remove_empty_children(list_dict):
