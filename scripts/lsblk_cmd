@@ -12,7 +12,7 @@ import io
 # |- could just rename the variables too 
 
 def find_dm_device(dict_list, parent_index, dm_name):
-	cmd = ("ls -l /dev/mapper/ | grep %s | awk '{ print $9 }'" % dm_name.decode("utf-8"))
+	cmd = ("ls -l /dev/mapper/ | grep %s | awk '{ print $9 }'" % dm_name)
 	cmd_buf = subprocess.check_output(cmd, shell=True).replace('\n', '')
 
 	print("Step")
